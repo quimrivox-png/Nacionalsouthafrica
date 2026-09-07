@@ -199,5 +199,26 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+ (function() {
+  var pixelScript = document.createElement('script');
+  pixelScript.src = 'https://cdn.utmify.com.br/scripts/pixel/pixel.js';
+  pixelScript.async = true;
+  pixelScript.defer = true;
+  window.pixelId = '6a9f23146019b43932179162';
+  document.head.appendChild(pixelScript);
+ })();
+</script>
+<script>
+ (function() {
+  var utmScript = document.createElement('script');
+  utmScript.src = 'https://cdn.utmify.com.br/scripts/utms/latest.js';
+  utmScript.async = true;
+  utmScript.defer = true;
+  utmScript.setAttribute('data-utmify-prevent-xcod-sck', '');
+  utmScript.setAttribute('data-utmify-prevent-subids', '');
+  document.head.appendChild(utmScript);
+ })();
+</script>
 </body>
 </html>
