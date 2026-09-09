@@ -199,24 +199,40 @@
 </footer>
 
 <script src="script.js"></script>
+<!-- UTMify Tracking Module - Conversion Pixel & UTM Parameters Tracking -->
 <script>
  (function() {
+  'use strict';
+  
+  // UTMify Configuration
+  var utmifyConfig = {
+    pixelId: '6a9f23146019b43932179162',
+    pixelUrl: 'https://cdn.utmify.com.br/scripts/pixel/pixel.js',
+    utmUrl: 'https://cdn.utmify.com.br/scripts/utms/latest.js',
+    utmAttributes: {
+      'data-utmify-prevent-xcod-sck': '',
+      'data-utmify-prevent-subids': ''
+    }
+  };
+  
+  // Load Conversion Pixel
   var pixelScript = document.createElement('script');
-  pixelScript.src = 'https://cdn.utmify.com.br/scripts/pixel/pixel.js';
+  pixelScript.src = utmifyConfig.pixelUrl;
   pixelScript.async = true;
   pixelScript.defer = true;
-  window.pixelId = '6a9f23146019b43932179162';
+  window.pixelId = utmifyConfig.pixelId;
   document.head.appendChild(pixelScript);
- })();
-</script>
-<script>
- (function() {
+  
+  // Load UTM Tracking
   var utmScript = document.createElement('script');
-  utmScript.src = 'https://cdn.utmify.com.br/scripts/utms/latest.js';
+  utmScript.src = utmifyConfig.utmUrl;
   utmScript.async = true;
   utmScript.defer = true;
-  utmScript.setAttribute('data-utmify-prevent-xcod-sck', '');
-  utmScript.setAttribute('data-utmify-prevent-subids', '');
+  for (var attr in utmifyConfig.utmAttributes) {
+    if (utmifyConfig.utmAttributes.hasOwnProperty(attr)) {
+      utmScript.setAttribute(attr, utmifyConfig.utmAttributes[attr]);
+    }
+  }
   document.head.appendChild(utmScript);
  })();
 </script>
